@@ -1,0 +1,24 @@
+MACBOOK PRO
+alias9 10
+alias2 11
+alias3 20
+alias8 10
+alias2 9
+alias1 10
+THINKPAD P50
+alias4 50
+alias5 20
+alias7 10
+alias1 20
+alias6 10
+IPHONE 11
+alias10 20
+alias11 50
+alias2 20
+alias12 40
+alias13 20
+SAMSUNG TV 50
+alias14 11
+alias15 10
+alias1a 11
+alias2b 10
