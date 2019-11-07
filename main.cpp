@@ -22,25 +22,38 @@ int main() {
 	string line;
 	ifstream input("bid_example.txt");
 	if (input.is_open()) {
-		map<int, string> BidderBid;
+		map<string, int> BidderBid;
 		while (getline(input, line)) {
 			if (isupper(line[0]) != 1) {
 				istringstream bid(line);
 				vector<string> temp{ istream_iterator<string>{bid},
 					  istream_iterator<string>{} };
 				
-				BidderBid.insert(pair<int, string>(stoi(temp[1]), temp[0]));
+				BidderBid.insert(pair<string, int>(temp[0],stoi(temp[1])));
 				cout << temp[0]<<" "<< temp[1]<<endl;
 			}
 			else {
-				if (BidderBid.size() != 0) { //sort and write back to file
-					//output << accumulate(BidderBid.begin(), BidderBid.end(), 0, [](int acc, std::pair<int, string> p) { return (acc + p.first); }) << endl;
+				if (BidderBid.size() != 0) { //sort and write back to 
 
-					//sort
-					//reverse(BidderBid.begin(), BidderBid.end());
+					//mayor valor
+					auto max = max_element(BidderBid.begin(), BidderBid.end(),
+						[](const pair<string, int>& p1, const pair<string, int>& p2) {
+							return p1.second < p2.second; });
 					
+					output << max->second<<",";
+					//promedio
+					output << (accumulate(BidderBid.begin(), BidderBid.end(), 0, [](int acc, std::pair<string, int> p) { return (acc + p.second); }))/BidderBid.size() << ",";
+					
+					//mayor menor
+					auto min = min_element(BidderBid.begin(), BidderBid.end(),
+						[](const pair<string, int>& p1, const pair<string, int>& p2) {
+							return p1.second < p2.second; });
+
+					output << min->second << endl;
+
+					//write
 					for (auto itr = BidderBid.begin(); itr != BidderBid.end(); ++itr) {
-						output << itr->second <<" "<< itr->first << '\n';
+						output << itr->first <<" "<< itr->second << '\n';
 					}
 					cout << endl;	
 				}
