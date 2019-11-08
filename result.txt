@@ -16,4 +16,8 @@ alias11 50
 alias12 40
 alias13 20
 alias2 20
-SAMSUNG TV 50,
+SAMSUNG TV 50,11,10,10
+alias14 11
+alias15 10
+alias1a 11
+alias2b 10
